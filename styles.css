@@ -1,0 +1,169 @@
+body {
+    background-color: rgb(245, 245, 245);
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-sizing: border-box;
+    width: 50%;
+    height: 500px;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.icon-latest {
+    position: absolute;
+    top: 30px;
+    left: 48px;
+    cursor: pointer;
+}
+
+.icon-refresh {
+    position: absolute;
+    top: 30px;
+    right: 48px;
+    cursor: pointer;
+}
+
+.icon-refresh svg {
+    transform: rotate(185deg);
+}
+
+h1 {
+    text-align: center;
+    margin: 0%;
+}
+
+h2,
+h4 {
+    text-align: center;
+    margin: 15px 0px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+form label,
+form input[type=radio] {
+    cursor: pointer;
+}
+
+#datos {
+    margin-top: 0%;
+}
+
+#datos input[type=text],
+#datos input[type=email] {
+    border: 1px solid rgb(118, 118, 118) !important;
+    border-radius: 5px;
+    padding: 2px 4px;
+}
+
+#especialidad,
+#btn-turnos,
+#aclaracion {
+    display: none;
+}
+
+#contenedor button,
+form input[type=submit] {
+    width: 17%;
+    height: 30px;
+    position: absolute;
+    top: 475px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    background-color: rgb(13, 110, 253);
+    border: none;
+    border-radius: 15px;
+    color: white;
+    transition-duration: 0.15s;
+}
+
+#contenedor button:hover,
+form input[type=submit]:hover {
+    background-color: #0b5ed7;
+}
+
+form input[type=radio] {
+    margin-right: 10px;
+}
+
+input {
+    margin-top: 10px;
+}
+
+#seleccion-horario {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#seleccion-horario div {
+    width: 40%;
+}
+
+#confirmacion {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.modal-body {
+    padding: 0px 1rem;
+}
+
+.modal-body p {
+    margin: 20px 0px;
+}
+
+.btn-danger {
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.btn-danger span {
+    margin-left: 5px;
+}
+
+.btn-turnos .tooltiptext {
+    visibility: hidden;
+    width: 100px;
+    background-color: rgb(44, 44, 44);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 110%;
+    left: 50%;
+    margin-left: -50px;
+}
+
+.btn-turnos .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(44, 44, 44) transparent transparent transparent;
+}
+
+.btn-turnos:hover .tooltiptext {
+    visibility: visible;
+}
