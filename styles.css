@@ -67,12 +67,6 @@ form input[type=radio] {
     padding: 2px 4px;
 }
 
-#especialidad,
-#btn-turnos,
-#aclaracion {
-    display: none;
-}
-
 #contenedor button,
 form input[type=submit] {
     width: 17%;
@@ -166,4 +160,17 @@ input {
 
 .btn-turnos:hover .tooltiptext {
     visibility: visible;
+}
+
+.usuario {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    justify-content: space-between;
+}
+
+.usuario p {
+    text-align: center;
 }

@@ -210,7 +210,17 @@ function seleccionHorario(){
         
         document.getElementById("contenedor").appendChild(confirmacion);
 
-        document.getElementById("btn-turnos").style.display = "block";
+        let btnTurnos = document.createElement("button");
+
+        btnTurnos.setAttribute("data-bs-toggle", "modal")
+
+        btnTurnos.setAttribute("data-bs-target", "#modal-turnos")
+
+        btnTurnos.className = "btn-turnos"
+
+        btnTurnos.innerHTML = "Ver turnos"
+
+        document.getElementById("contenedor").appendChild(btnTurnos);
 
         Toastify({
             text: "Turno agendado",
@@ -252,10 +262,28 @@ document.querySelectorAll(".btn-turnos").forEach(function(button) {
             for (let i = 0; i < array.length; i++) {
                 let data = array[i];
                 let { name, lastname } = data[0];
-                let turno = document.createElement('p');
-                turno.className = "usuario";
-                turno.innerHTML = `Medico: ${data[2]} - Paciente: ${name} ${lastname} - Día: ${data[3]} - Hora: ${data[4]}`;
-                document.getElementById('turnos').appendChild(turno);
+
+                let container = document.createElement("div");
+                container.className = "usuario"
+
+                let div1 = document.createElement("div")
+                div1.innerHTML = `<p>Medico: ${data[2]}</p>`
+                
+                let div2 = document.createElement("div")
+                div2.innerHTML = `<p>Paciente: ${name} ${lastname}</p>`
+
+                let div3 = document.createElement("div")
+                div3.innerHTML = `<p>Día: ${data[3]}</p>`
+
+                let div4 = document.createElement("div")
+                div4.innerHTML = `<p>Hora: ${data[4]}</p>`
+
+                container.appendChild(div1);
+                container.appendChild(div2);
+                container.appendChild(div3);
+                container.appendChild(div4);
+
+                document.getElementById('turnos').appendChild(container);
             }
         }
     });
