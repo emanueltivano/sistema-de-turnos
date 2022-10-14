@@ -218,6 +218,8 @@ function seleccionHorario(){
 
         btnTurnos.className = "btn-turnos"
 
+        btnTurnos.id = "btn-turnos"
+
         btnTurnos.innerHTML = "Ver turnos"
 
         document.getElementById("contenedor").appendChild(btnTurnos);
@@ -249,44 +251,14 @@ function seleccionHorario(){
     });
 }
 
+document.getElementById("contenedor").addEventListener("click", function(event) {
+    if ( event.target.className === 'btn-turnos') {
+        handlerClick()
+    }
+});
+
 document.querySelectorAll(".btn-turnos").forEach(function(button) {
-    button.addEventListener("click", function() {
-        if (localStorage.getItem("users") === null) {
-            document.getElementById('aclaracion').style.display = "block";
-            document.getElementById('borrar-turnos').setAttribute('disabled', '');
-        } else {
-            document.getElementById('aclaracion').style.display = "none";
-            document.getElementById('borrar-turnos').removeAttribute('disabled');
-            let array = JSON.parse(localStorage.users);
-    
-            for (let i = 0; i < array.length; i++) {
-                let data = array[i];
-                let { name, lastname } = data[0];
-
-                let container = document.createElement("div");
-                container.className = "usuario"
-
-                let div1 = document.createElement("div")
-                div1.innerHTML = `<p>Medico: ${data[2]}</p>`
-                
-                let div2 = document.createElement("div")
-                div2.innerHTML = `<p>Paciente: ${name} ${lastname}</p>`
-
-                let div3 = document.createElement("div")
-                div3.innerHTML = `<p>Día: ${data[3]}</p>`
-
-                let div4 = document.createElement("div")
-                div4.innerHTML = `<p>Hora: ${data[4]}</p>`
-
-                container.appendChild(div1);
-                container.appendChild(div2);
-                container.appendChild(div3);
-                container.appendChild(div4);
-
-                document.getElementById('turnos').appendChild(container);
-            }
-        }
-    });
+    button.addEventListener("click", handlerClick);
 });
 
 document.getElementById('cerrar-modal').addEventListener("click", function(){
@@ -313,3 +285,41 @@ document.getElementById('borrar-turnos').addEventListener("click", function(){
         }
     }).showToast();
 });
+
+function handlerClick() {
+    if (localStorage.getItem("users") === null) {
+        document.getElementById('aclaracion').style.display = "block";
+        document.getElementById('borrar-turnos').setAttribute('disabled', '');
+    } else {
+        document.getElementById('aclaracion').style.display = "none";
+        document.getElementById('borrar-turnos').removeAttribute('disabled');
+        let array = JSON.parse(localStorage.users);
+
+        for (let i = 0; i < array.length; i++) {
+            let data = array[i];
+            let { name, lastname } = data[0];
+
+            let container = document.createElement("div");
+            container.className = "usuario"
+
+            let div1 = document.createElement("div")
+            div1.innerHTML = `<p>Medico: ${data[2]}</p>`
+            
+            let div2 = document.createElement("div")
+            div2.innerHTML = `<p>Paciente: ${name} ${lastname}</p>`
+
+            let div3 = document.createElement("div")
+            div3.innerHTML = `<p>Día: ${data[3]}</p>`
+
+            let div4 = document.createElement("div")
+            div4.innerHTML = `<p>Hora: ${data[4]}</p>`
+
+            container.appendChild(div1);
+            container.appendChild(div2);
+            container.appendChild(div3);
+            container.appendChild(div4);
+
+            document.getElementById('turnos').appendChild(container);
+        }
+    }
+}
